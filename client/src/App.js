@@ -1,9 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import MiniSequencer from './components/MiniSequencer'
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
+      <div>NavBar Component</div>
+      <MiniSequencer />
     </div>
   );
 }
