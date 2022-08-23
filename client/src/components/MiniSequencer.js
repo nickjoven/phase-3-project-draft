@@ -1,0 +1,53 @@
+import { useState, useEffect } from 'react'
+
+const steps = 16
+const initialCellState = { triggered: false, activated: false }
+const lineMap = ["BD"]
+const initialState = [new Array(16).fill(initialCellState)]
+
+const MiniSequencer = ({ player }) => {
+    const [sequence, setSequence] = useState(initialState)
+    const [playing, setPlaying] = useState(true)
+    const [currentStep, setCurrentStep] = useState(0)
+
+    const toggleStep = (line, step) => {
+        const sequenceCopy = [...sequence]
+        const {triggered, activated } = sequenceCopy[line][step]
+        sequenceCopy[line][step] = { triggered, activated: !activated }
+        console.log(sequenceCopy)
+        setSequence(sequenceCopy)
+    }
+
+    const nextStep = (time) => {
+        for (let i = 0; i < sequence.length; i++ ) {
+            for (let j = 0; j < sequence[i].length; j++) {
+                const { triggered, activated } = sequence[i][j]
+                sequence[i][j] = { activated, triggered: j === time }
+                if (triggered && activated) {
+                    player.get(lineMap[i]).start();
+                }
+            }
+        }
+        setSequence(sequence)
+    }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (playing) {
+                setCurrentStep((currentStep + 1) % steps)
+                nextStep(currentStep)
+            }
+        }, 100 + Math.random() * 20)
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [currentStep, playing])
+
+    return (
+        <div>
+            MiniSequencer
+        </div>
+    )
+}
+
+export default MiniSequencer

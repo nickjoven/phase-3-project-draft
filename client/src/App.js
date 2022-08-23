@@ -1,10 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import PlayerProvider from "./components/PlayerProvider";
+import MiniSequencer from "./components/MiniSequencer";
 function App() {
   return (
-    <div className="App">
-    </div>
+    <PlayerProvider>
+      {({ player }) => {
+        if (!player) {
+          return <p>loading...</p>
+        }
+        return (
+          <div className="App">
+            <h2>NavBar</h2>
+            <MiniSequencer player={player} />
+          </div>
+        )
+      }}
+    </PlayerProvider>
   );
 }
 
