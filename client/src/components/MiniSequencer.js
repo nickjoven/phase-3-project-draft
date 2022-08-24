@@ -7,14 +7,12 @@ import PlayButton from './PlayButton';
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
 const lineMap = ["BD", "BD2"];
-const initialState = [
-    new Array(16).fill(initialCellState),
-    new Array(16).fill(initialCellState),
-];
-const _initialState = new Array(lineMap.length).fill().map(() => Array(16).fill(initialCellState))
+// const initialState = [
+//     new Array(16).fill(initialCellState),
+//     new Array(16).fill(initialCellState),
+// ];
+const initialState = new Array(lineMap.length).fill().map(() => Array(16).fill(initialCellState))
 
-console.log(initialState)
-console.log(_initialState)
 
 const MiniSequencer = ({ player }) => {
     const [sequence, setSequence] = useState(initialState);

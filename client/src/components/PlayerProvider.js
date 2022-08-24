@@ -10,7 +10,6 @@ const PlayerProvider = ({ children }) => {
                 BD2: '/sub_kick_01_C.wav',
             },
             () => {
-                console.log('uh', _player.get())
                 console.log("buffers loaded");
                 setPlayer(_player);
             }
