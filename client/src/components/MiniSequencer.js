@@ -46,7 +46,7 @@ const MiniSequencer = ({ player }) => {
                 setCurrentStep((currentStep + 1) % steps);
                 nextStep(currentStep);
             }
-        }, 120);
+        }, 112);
         return () => {
             clearTimeout(timer);
         };
