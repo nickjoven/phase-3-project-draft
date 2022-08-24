@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react'
+import Grid from './Grid';
+import Bar from './SequencerBar'
+import PlayButton from './PlayButton';
+
 
 const steps = 16
 const initialCellState = { triggered: false, activated: false }
@@ -9,7 +13,6 @@ const MiniSequencer = ({ player }) => {
     const [sequence, setSequence] = useState(initialState)
     const [playing, setPlaying] = useState(true)
     const [currentStep, setCurrentStep] = useState(0)
-
     const toggleStep = (line, step) => {
         const sequenceCopy = [...sequence]
         const {triggered, activated } = sequenceCopy[line][step]
@@ -34,20 +37,23 @@ const MiniSequencer = ({ player }) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             if (playing) {
-                setCurrentStep((currentStep + 1) % steps)
-                nextStep(currentStep)
+                setCurrentStep((currentStep + 1) % steps);
+                nextStep(currentStep);
             }
-        }, 100 + Math.random() * 20)
+        }, 100 + Math.random() * 20);
         return () => {
-            clearTimeout(timer)
-        }
-    }, [currentStep, playing])
+            clearTimeout(timer);
+        };
+    }, [currentStep, playing]);
 
     return (
-        <div>
-            MiniSequencer
-        </div>
-    )
-}
+        <>
+            <Bar>
+                <PlayButton playing={playing} onClick={() => setPlaying(!playing)} />
+            </Bar>
+            <Grid sequence={sequence} toggleStep={toggleStep} />
+        </>
+    );
+};
 
-export default MiniSequencer
+export default MiniSequencer;
