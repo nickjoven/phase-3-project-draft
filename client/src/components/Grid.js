@@ -1,8 +1,8 @@
-import Frame from "./Frame";
+import MiniFrame from "./MiniFrame";
 import Cell from "./Cell";
 
-const Grid = ({ sequence, toggleStep }) => (
-    <Frame rows={4} columns={16}>
+const Grid = ({ sequence, toggleStep, steps, lineMap }) => (
+    <MiniFrame rows={lineMap.length} columns={steps}>
         {sequence.map((line, i) =>
             line.map((time, j) => (
                 <Cell
@@ -15,7 +15,7 @@ const Grid = ({ sequence, toggleStep }) => (
                 />
             ))
         )}
-    </Frame>
+    </MiniFrame>
 );
 
 export default Grid;

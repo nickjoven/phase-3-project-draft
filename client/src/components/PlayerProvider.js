@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import * as Tone from 'tone'
 
 const PlayerProvider = ({ children }) => {
     const [player, setPlayer] = useState(null);
     useEffect(() => {
-        const player = new Tone.Players(
+        const _player = new Tone.Players(
             {
-                BD: "/kick.wav",
+                BD: '/kick.wav',
             },
             () => {
+                console.log('uh', _player.get())
                 console.log("buffers loaded");
-                setPlayer(player);
+                setPlayer(_player);
             }
         ).toDestination();
     }, []);

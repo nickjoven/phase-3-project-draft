@@ -4,35 +4,38 @@ import Bar from './SequencerBar'
 import PlayButton from './PlayButton';
 
 
-const steps = 16
-const initialCellState = { triggered: false, activated: false }
-const lineMap = ["BD"]
-const initialState = [new Array(16).fill(initialCellState)]
+const steps = 16;
+const initialCellState = { triggered: false, activated: false };
+const lineMap = ["BD"];
+const initialState = [
+    new Array(16).fill(initialCellState),
+];
 
 const MiniSequencer = ({ player }) => {
-    const [sequence, setSequence] = useState(initialState)
-    const [playing, setPlaying] = useState(true)
-    const [currentStep, setCurrentStep] = useState(0)
-    const toggleStep = (line, step) => {
-        const sequenceCopy = [...sequence]
-        const {triggered, activated } = sequenceCopy[line][step]
-        sequenceCopy[line][step] = { triggered, activated: !activated }
-        console.log(sequenceCopy)
-        setSequence(sequenceCopy)
-    }
+    const [sequence, setSequence] = useState(initialState);
+    const [playing, setPlaying] = useState(true);
+    const [currentStep, setCurrentStep] = useState(0);
 
-    const nextStep = (time) => {
-        for (let i = 0; i < sequence.length; i++ ) {
+    const toggleStep = (line, step) => {
+        const sequenceCopy = [...sequence];
+        const { triggered, activated } = sequenceCopy[line][step];
+        sequenceCopy[line][step] = { triggered, activated: !activated };
+        console.log("toggled");
+        setSequence(sequenceCopy);
+    };
+
+    const nextStep = time => {
+        for (let i = 0; i < sequence.length; i++) {
             for (let j = 0; j < sequence[i].length; j++) {
-                const { triggered, activated } = sequence[i][j]
-                sequence[i][j] = { activated, triggered: j === time }
+                const { triggered, activated } = sequence[i][j];
+                sequence[i][j] = { activated, triggered: j === time };
                 if (triggered && activated) {
-                    player.get(lineMap[i]).start();
+                    player.player(lineMap[i]).start();
                 }
             }
         }
-        setSequence(sequence)
-    }
+        setSequence(sequence);
+    };
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -51,7 +54,7 @@ const MiniSequencer = ({ player }) => {
             <Bar>
                 <PlayButton playing={playing} onClick={() => setPlaying(!playing)} />
             </Bar>
-            <Grid sequence={sequence} toggleStep={toggleStep} />
+            <Grid sequence={sequence} toggleStep={toggleStep} steps={steps} lineMap={lineMap} />
         </>
     );
 };
