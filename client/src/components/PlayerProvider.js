@@ -6,7 +6,8 @@ const PlayerProvider = ({ children }) => {
     useEffect(() => {
         const _player = new Tone.Players(
             {
-                BD: '/kick.wav',
+                BD: '/trad_kick_03_C.wav',
+                BD2: '/sub_kick_01_C.wav',
             },
             () => {
                 console.log('uh', _player.get())
