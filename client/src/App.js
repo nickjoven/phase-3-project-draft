@@ -9,6 +9,8 @@ import MiniSequencer from "./components/MiniSequencer";
 const App = () => {
   const [currentUser, setCurrentUser] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const lineMap = ["BD", "BD2"];
   
   return (
     <PlayerProvider>
@@ -25,7 +27,7 @@ const App = () => {
             </> :
             <>
               <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-              <MiniSequencer player={player} />
+              <MiniSequencer player={player} lineMap={lineMap} />
             </>
             }
           </div>
