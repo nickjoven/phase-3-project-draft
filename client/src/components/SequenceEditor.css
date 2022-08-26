@@ -27,3 +27,21 @@
     background: #04AA6D;
     cursor: pointer;
 }
+
+.save-sequence {
+    display: flex;
+    cursor: pointer;
+}
+
+.save-sequence:hover {
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.tempo-btn {
+    display: flex;
+    position: relative;
+    margin-left: 45%;
+    top: -125px;
+    
+
+}

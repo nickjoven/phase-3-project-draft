@@ -1,0 +1,22 @@
+.new-sequence-form-container {
+    display: grid;
+
+}
+
+.input-img {
+    display: flex;
+    position: relative;
+    top: -50px;
+}
+
+.input-sequence {
+    display: flex;
+    position: relative;
+    top: -60px;
+}
+
+.add-sq {
+   box-sizing: content-box;
+   top: -60px;
+    
+}
