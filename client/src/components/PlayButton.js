@@ -1,23 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { darken } from "polished";
+import './PlayButton.css'
 
-const Button = styled.button`
-  padding: 0.75em 2em;
-  outline: none;
-  background-color: #27ae60;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 1em;
-  margin: 0.5em;
+const PlayButton = ({ playing, onClick }) => {
 
-  &:hover {
-    background: ${darken(0.2, "#27ae60")};
-    cursor: pointer;
-  }
-`;
+return (
+<div className='home-button' onClick={onClick}>{playing? <img src="/icons8-play-50.png" /> : <img src="/icons8-pause-50.png" />}
+</div>
+  
+)
+}
 
-export default ({ playing, onClick }) => (
-    <Button onClick={onClick}>{playing ? "Stop" : "Play"}</Button>
-);
+export default PlayButton

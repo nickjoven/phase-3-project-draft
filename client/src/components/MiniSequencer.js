@@ -56,7 +56,7 @@ const MiniSequencer = ({ player }) => {
         <>
             <Bar>
                 <PlayButton playing={playing} onClick={() => setPlaying(!playing)} />
-            </Bar>
+            </Bar>  
             <Grid sequence={sequence} toggleStep={toggleStep} steps={steps} lineMap={lineMap} />
         </>
     );

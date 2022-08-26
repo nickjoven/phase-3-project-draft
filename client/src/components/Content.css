@@ -1,0 +1,21 @@
+.content {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+}
+
+.left-margin {
+    width: 20%;
+    background: linear-gradient(70deg,
+    #9997b1,
+    #ffffff);
+    height: 100vh;
+}
+
+.right-margin {
+    width: 20%;
+    background: linear-gradient(70deg,
+        #ffffff,
+        #9997b1);
+    height: 100vh;
+}

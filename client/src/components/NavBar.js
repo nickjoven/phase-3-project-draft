@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import users from '../data/users'
+import DropdownMenu from './DropdownMenu'
+import './NavBar.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 
 const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
     const [search, setSearch] = useState('')
@@ -11,7 +16,11 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
         setIsClicked(isClicked => !isClicked)
     }
 
+    
 
+    const handleDropdown = () => {
+
+    }
 
     // filter blah bleh
 
@@ -25,25 +34,27 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
 
     return (
 
-        <div>
+        <div className='nav-bar'>
             {isLoggedIn ?
                 <div className="LoggedIn">
-                    <form>
-                        <input
-                            type='text'>
-                        </input>
-                    </form>
-                    <button onClick={handleClick}>{currentUser.username}</button>
+                    <div className='logo-title' >
+                        <img className='audio-wave-small' src='/audio-wave.gif'></img>
+                        <div className='title-small'>SequenceMe</div>
+                    </div>
+                    <div className='form-div'>
+                        <form>
+                            <div class="container">
+                            <input type="text" placeholder="Search..."/>
+                             <div class="search"></div>
+                            </div>
+                        </form>
+                        <button onClick={handleClick}></button>
+                        <button>+</button>
+                    </div>
                     {isClicked ?
                         <div>
-                            <ul>
-                                <li>Profile</li>
-                                <li>Following</li>
-                                <li>Logout</li>
-                            </ul>
-                            <button>+</button>
-                        </div> :
-                        null
+                            < DropdownMenu currentUser={currentUser} onClick={handleClick}/> 
+                        </div> : null
                     }
                 </div> :
                 <div className="LoggedOut">

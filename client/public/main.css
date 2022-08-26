@@ -1,12 +1,3 @@
-.login {
-    display: flex;
-    justify-content: center;
-}
-
-.login-form-container {
-}
-
-.LoggedIn {
-    display: flex;
-    justify-content: center;
+body {
+    background-color: aquamarine;
 }

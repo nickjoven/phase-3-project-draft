@@ -3,13 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.0",
+    "bulma": "^0.9.4",
+    "mdb-react-ui-kit": "^4.1.0",
+    "mdb-ui-kit": "^4.4.0",
     "polished": "3.4.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-bulma-components": "^4.1.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
     "standardized-audio-context": "^25.3.29",
     "styled-components": "4.2.1",
     "tone": "^14.7.77",
@@ -38,5 +50,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "react-router-dom": "^6.3.0"
   }
 }
