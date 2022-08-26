@@ -3,18 +3,14 @@ import Feed from './Feed'
 import SideBar from './SideBar'
 import './Content.css'
 
-export default function Content() {
+export default function Content({currentUser}) {
 
-
-
-
-
-    
+  
   return (
     <div className='content'>
         <div className='left-margin' />
-        <Feed />
-        <SideBar />
+        <Feed currentUser={currentUser} />
+        <SideBar currentUser={currentUser} />
         <div className='right-margin' />
     </div>
 

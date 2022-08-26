@@ -47,7 +47,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={isLoggedIn ?
                   <>
-                    <Content /> 
+                    <Content currentUser={currentUser} /> 
                   </> :
                   <>
                     {hasAccount ? 

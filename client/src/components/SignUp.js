@@ -10,6 +10,7 @@ const SignUp = ({currrentUser, setCurrentUser, handleLoginSuccess}) =>  {
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
     const [location, setLocation] = useState('')
+    const [image, setImage] = useState('')
 
     const navigate = useNavigate()
 
@@ -33,6 +34,7 @@ const SignUp = ({currrentUser, setCurrentUser, handleLoginSuccess}) =>  {
                 email: email,
                 password_digest: password,
                 location: location,
+                image: image,
             })
         })
         if (req.ok) {
@@ -73,6 +75,10 @@ const SignUp = ({currrentUser, setCurrentUser, handleLoginSuccess}) =>  {
                                 <div className="signup__field">
                                     <i className="signup__icon fas fa-lock"></i>
                                     <input type="text" className="signup__input" name='location' placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} />
+                                </div>
+                                <div className="signup__field">
+                                    <i className="signup__icon fas fa-lock"></i>
+                                    <input type="text" className="signup__input" name='image' placeholder="Image URL" value={image} onChange={(e) => setImage(e.target.value)} />
                                 </div>
                                 <div className='signup-help-me'>
                                     <button className="button signup__submit">

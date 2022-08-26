@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import users from '../data/users'
 import './Feed.css'
 
@@ -9,7 +9,9 @@ import './Feed.css'
 // split screene for the FEED that will include Latest sequences from people you know
 // under image, it will show followers 
 
-const Feed = ({}) => {
+const Feed = ({currentUser}) => {
+
+  const { id, username, email, image, location } = currentUser
 
     return (
          <div className='feed'>
@@ -20,16 +22,16 @@ const Feed = ({}) => {
                 <div className="card-body">
                   <div className="avatar">
                     <img
-                      src='https://f4.bcbits.com/img/a4040590719_10.jpg'
+                      src={image ? image : 'https://cdn.dribbble.com/users/300756/screenshots/2063926/media/56799ac93b5c7d59aad7c24ff55aa311.gif'}
                       className="card-img-top"
-                      alt=""
+                      alt={username}
                     />
                   </div>
                   <h5 className="card-title">
-                    Nicholas Joven
+                    {username}
                   </h5>
                   <p className="card-text">
-                    New York City 
+                    {location}
                     <br />
                     <span className="phone">420 Followers</span>
                   </p>
