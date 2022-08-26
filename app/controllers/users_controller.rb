@@ -31,4 +31,17 @@ class UsersController < ApplicationController
             render json: {error: 'Invalid email password'}, status: 404
         end
     end
+
+    def signup
+        user = User.create(
+            username: params[:username], 
+            email: params[:email], 
+            password_digest: params[:password_digest], 
+            location: params[:location], 
+        )
+        if user.save
+            render json: user
+        end
+    end
+
 end

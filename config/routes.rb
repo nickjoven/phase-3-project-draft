@@ -6,10 +6,9 @@ Rails.application.routes.draw do
 
 
   post '/login_attempt', to: 'users#login'
+  post '/signup_attempt', to: 'users#signup'
   resources :users
   resources :sequences
   resources :follows
 
-
-  
 end

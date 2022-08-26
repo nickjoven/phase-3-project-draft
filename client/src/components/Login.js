@@ -6,7 +6,7 @@ import './Login.css'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasAccount }) => {
+const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasAccount, handleLoginSuccess }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -37,20 +37,18 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
 			let res = await req.json()
 			console.log('User', res)
 			handleLoginSuccess(res)
+			navigate("/")
 		} else {
 			alert('Invalid login info')
 		}
 	}
-
-
-
-    const handleLoginSuccess = (user) => {
-        setCurrentUser(user)
-        setIsLoggedIn(true)
-		navigate("/")
-    }
+	
+	// moved login handler up to pass to signup
 
 	const navigate = useNavigate()
+
+
+
 
     //const handleClick = () => {
        

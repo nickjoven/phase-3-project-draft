@@ -48,7 +48,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
                              <div class="search"></div>
                             </div>
                         </form>
-                        <button onClick={handleClick}></button>
+                        <button onClick={handleClick}>{currentUser.username}</button>
                         <button>+</button>
                     </div>
                     {isClicked ?
