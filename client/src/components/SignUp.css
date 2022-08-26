@@ -11,13 +11,12 @@ body {
     background: white
 }
 
-.SIGNUP-container {
+.container {
     display: flex;
     align-items: center;
     justify-content: center;
     top: 150px;
     right: 30px;
-
 }
 
 .screen {

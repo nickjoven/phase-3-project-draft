@@ -27,7 +27,7 @@ const handleSubmit = (e) => {
     <div>
         <div className='container-signup'>
             <div className='create-account'>Create Account</div>
-            <div className="SIGNUP-container">
+            <div className="container">
                 <div className="screen">
                     <div className="screen__content">
                         <form className="login" onSubmit={handleSubmit}>

@@ -42,7 +42,7 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
 
 
     return (
-        <div>
+        <div className='login-whole'>
             <img className='audio-wave' src='/audio-wave.gif'></img>
             <div className='title'>SequenceMe</div>
         <div className="container">
