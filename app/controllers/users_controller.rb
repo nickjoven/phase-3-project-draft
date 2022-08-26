@@ -37,7 +37,8 @@ class UsersController < ApplicationController
             username: params[:username], 
             email: params[:email], 
             password_digest: params[:password_digest], 
-            location: params[:location], 
+            location: params[:location],
+            image: params[:image] 
         )
         if user.save
             render json: user

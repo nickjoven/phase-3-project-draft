@@ -19,12 +19,6 @@ const App = () => {
   const lineMap = ["BD", "SN"];
   const lineMap2 = ['BD', 'BD2', 'SN', 'CH', 'OH', 'T1', 'T2', 'T3']
 
-  const handleLoginSuccess = (user) => {
-    setCurrentUser(user)
-    setIsLoggedIn(true)
-  }
-
-  
   return (
     <PlayerProvider>
       {({ 
@@ -52,9 +46,9 @@ const App = () => {
                   <>
                     {hasAccount ? 
                       <>
-                        <Login setHasAccount = {() => setHasAccount(false)} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} handleLoginSuccess={handleLoginSuccess} />
+                        <Login setHasAccount = {() => setHasAccount(false)} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />
                       </> : 
-                      <SignUp currentUser={currentUser} setCurrentUser={setCurrentUser} handleLoginSuccess={handleLoginSuccess} />
+                      <SignUp currentUser={currentUser} setCurrentUser={setCurrentUser} setIsLoggedIn={setIsLoggedIn} />
                     }
                   <MiniSequencer player={player} lineMap={lineMap} />
                   </>

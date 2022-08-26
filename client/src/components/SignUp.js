@@ -5,7 +5,7 @@ import './SignUp.css'
 import { useNavigate } from 'react-router-dom'
 
 
-const SignUp = ({currrentUser, setCurrentUser, handleLoginSuccess}) =>  {
+const SignUp = ({ currrentUser, setCurrentUser, setIsLoggedIn }) =>  {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
@@ -42,6 +42,11 @@ const SignUp = ({currrentUser, setCurrentUser, handleLoginSuccess}) =>  {
             handleLoginSuccess(res)
             navigate("/")
         } else alert('failed')
+    }
+
+    const handleLoginSuccess = (user) => {
+        setCurrentUser(user)
+        setIsLoggedIn(true)
     }
 
 // same button set to true back to signup, 
