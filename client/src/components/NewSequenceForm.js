@@ -10,7 +10,6 @@ const NewSequenceForm = ({controlForm, sequenceObject}) => {
         </div>
     )
 }
-
 export default NewSequenceForm
 
 // const emptySequence = {
