@@ -174,14 +174,14 @@ const SequenceEditor = ({
     return (
         <>
             <NewSequenceForm controlForm={controlForm} sequenceObject={sequenceObject} />
-            <button onClick={handleSaveSequence}>Save to Database</button>
+            <img className='save-sequence'src='/savebutton.png' onClick={handleSaveSequence}/>
             <Bar>
                 <PlayButton playing={playing} onClick={() => setPlaying(!playing)} />
-                <form onSubmit={handleTempoClick}>
+                <form className='tempo-btn' onSubmit={handleTempoClick}>
                     <input type='number'value={visualBpm} placeholder='bpm' min='15' max='240' step='1' onChange={(e) => setVisualBpm(e.target.value)} />
                     <button type='submit'>Update Tempo</button>
                 </form>
-                <button onClick={handleClickDistortion}>Distortion</button>
+                <button className='distortion-btn' onClick={handleClickDistortion}>Distortion</button>
                 {showDistortion
                 ? 
                 <>

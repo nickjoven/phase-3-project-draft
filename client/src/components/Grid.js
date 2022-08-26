@@ -1,8 +1,9 @@
 import MiniFrame from "./MiniFrame";
 import Cell from "./Cell";
+import './Grid.css' 
 
 const Grid = ({ sequence, toggleStep, steps, lineMap }) => (
-    <MiniFrame rows={lineMap.length} columns={steps}>
+    <MiniFrame className='grid-background' rows={lineMap.length} columns={steps}>
         {sequence.map((line, i) =>
             line.map((time, j) => (
                 <Cell
