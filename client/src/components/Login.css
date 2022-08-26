@@ -11,39 +11,34 @@ body {
     background: white
 }
 
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 150px;
-    right: 30px;
-    
-}
-
-.screen {
+.login-screen {
     background: linear-gradient(90deg, #adaac3, #9997b1);
     position: relative;
     height: 400px;
     width: 360px;
     box-shadow: 0px 0px 24px #5C5696;
-    top: 30px;
     
 }
 
-.screen__content {
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.login-screen__content {
     z-index: 1;
     position: relative;
     height: 100%;
-    bottom: 70px;
     align-items: center;
-    bottom: 130px;
+    justify-content: center;
 }
 
 
 .login {
-    width: 320px;
-    padding: 30px;
-    padding-top: 156px;
+    width: 100%px;
+    height: 100%;
 }
 
 .login__field {
@@ -65,7 +60,6 @@ body {
     padding: 10px;
     padding-left: 30px;
     font-weight: 700;
-    width: 75%;
     transition: .2s;
     
 }
@@ -77,11 +71,24 @@ body {
     border-bottom-color: #6A679E;
 }
 
+.login-align-div{
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+
+.login-help-me {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
 .login__submit {
     background: #fff;
     font-size: 14px;
     margin-top: 30px;
-    padding: 16px 20px;
     border-radius: 26px;
     border: 1px solid #D4D3E8;
     text-transform: uppercase;
@@ -93,7 +100,6 @@ body {
     box-shadow: 0px 2px 2px #5C5696;
     cursor: pointer;
     transition: .2s;
-    left: 20px;
 }
 
 .login__submit:active,
@@ -127,6 +133,29 @@ body {
 .login__signup:hover {
     border-color: #6A679E;
     outline: none;
+}
+.login-whole {
+    width: 100%;
+    height: 50vh;
+
+}
+
+.login-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-banner-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    width: 1200px;
+}
+
+.login-button__text {
+    margin-left: 5px;
 }
 
 .button__icon {
@@ -165,15 +194,7 @@ body {
 .audio-wave {
     height: 60px;;
     width: 60px;
-    bottom: 250px;
     position: relative;
-    margin-bottom: 15px;
-    left: 120px;
-    top: 220px;
-    
-   
-    
-
 }
 .title {
     font-family: ethnocentric, sans-serif;
@@ -181,9 +202,7 @@ body {
     font-style: normal;
     color: rgb(73, 26, 120);
     position: relative;
-    bottom: 150px;
-    top: 150px;
-    right: 80px;
+    width: 30%;
     
 }
 .make-account {
@@ -197,78 +216,3 @@ body {
     font-family: Nunito, sans-serif;
     top: 20px;
 }
-
-.login-whole {
-    top: 50%;
-}
-
-
-
-
-
-/*
-
-
-
-
-.login-button{
-    position: relative;
-    bottom: 125px;
-}
-
-.make-account{
-    position: relative;
-    bottom: 125px;
-}
-
-.signup-button {
-    position: relative;
-    bottom: 115px;
-}
-*/
-
-
-/*  <div className='container'>
-<div className="screen">
-<div className="screen__content">
-<img className='audio-wave' src='/audio-wave.gif'>
-</img><div className='title'>SequenceMe</div><form className='login' onSubmit= {
-     handleSubmit
- }
-
- ><div className='login_field'><i class="login__icon fas fa-user"></i><input className='login_input'
-
- value= {
-     username
- }
-
- type='text'
- placeholder='Username'
-
- onChange= {
-     (e)=>setUsername(e.target.value)
- }
-
- /></div><div className='login-field'><i class="login__icon fas fa-lock"></i><input className='login_input'
- value= {
-     password
- }
-
- type='text'
- placeholder='Password'
-
- onChange= {
-     (e)=>setPassword(e.target.value)
- }
-
- /></div><div><Button.Group><Button className='login-button' fullwidth rounded color="primary">Login</Button>
- <span className='make-account'>Don't have an Account?</span>
- <Button className='signup-button' onClick= {
-     setHasAccount
- }
-
- fullwidth rounded color="primary">Sign Up</Button></Button.Group>
- <div className="screen__background">
- <span className="screen__background__shape screen__background__shape4"
- ></span><span className="screen__background__shape screen__background__shape3"></span><span className="screen__background__shape screen__background__shape2"></span><span className="screen__background__shape screen__background__shape1"></span></div></div></form></div></div></div>)
- } */

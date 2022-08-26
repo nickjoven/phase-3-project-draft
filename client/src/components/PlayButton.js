@@ -6,7 +6,7 @@ import './PlayButton.css'
 const PlayButton = ({ playing, onClick }) => {
 
 return (
-<div className='home-button' onClick={onClick}>{playing? <img src="/icons8-play-50.png" /> : <img src="/icons8-pause-50.png" />}
+    <div className='home-button'><img onClick={onClick} src={!playing ? "/icons8-play-50.png" : "/icons8-pause-50.png"}/>
 </div>
   
 )

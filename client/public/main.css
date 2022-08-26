@@ -1,3 +1,8 @@
-body {
-    background-color: aquamarine;
+
+.login-form-container {
+}
+
+.LoggedIn {
+    display: flex;
+    justify-content: center;
 }
