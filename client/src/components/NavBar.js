@@ -3,6 +3,7 @@ import users from '../data/users'
 import DropdownMenu from './DropdownMenu'
 import './NavBar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
 
 
@@ -48,8 +49,8 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, currentUser, setCurrentUser }) => {
                              <div class="search"></div>
                             </div>
                         </form>
-                        <button onClick={handleClick}></button>
-                        <button>+</button>
+                        <button onClick={handleClick}>{currentUser.username}</button>
+                        <button><Link to='/sequencer'>New Sequence</Link></button>
                     </div>
                     {isClicked ?
                         <div>
