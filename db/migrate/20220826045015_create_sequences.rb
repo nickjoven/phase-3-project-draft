@@ -4,7 +4,7 @@ class CreateSequences < ActiveRecord::Migration[7.0]
       t.string :title
       t.integer :plays
       t.string :image
-      t.hstore :settings
+      t.jsonb :settings
       t.integer :user_id
       t.string :pattern, array:true, default: []
 

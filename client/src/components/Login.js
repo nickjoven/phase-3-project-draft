@@ -11,18 +11,33 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
     const [password, setPassword] = useState('')
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const inputUser = users.find((user) => user.username || user.email === username)
-        if (inputUser) {
-            if (inputUser.password != password) {
-                alert(`invalid password for ${username}`)
-            } else handleLoginSuccess(inputUser)
-        } else {
-            alert(`invalid username/email: ${username}`)
-        }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     const inputUser = users.find((user) => user.username || user.email === username)
+    //     if (inputUser) {
+    //         if (inputUser.password != password) {
+    //             alert(`invalid password for ${username}`)
+    //         } else handleLoginSuccess(inputUser)
+    //     } else {
+    //         alert(`invalid username/email: ${username}`)
+    //     }
 
-    }
+    // }
+
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		let req = await fetch('http://localhost:3300/users', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({username: username, password: password})
+		})
+		if (req.ok) {
+			let res = await req.json()
+			console.log('User', res)
+		} else {
+			alert('Invalid login info')
+		}
+	}
 
 
 
