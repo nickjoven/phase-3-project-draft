@@ -161,7 +161,7 @@ const SequenceEditor = ({
             pattern: sequence,
         }
         console.log(passMe)
-        let req = await fetch('http://localhost:3300/sequences', {
+        let req = await fetch('http://localhost:3300/add_sequence', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(passMe)
