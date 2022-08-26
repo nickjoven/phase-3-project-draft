@@ -4,6 +4,7 @@ import 'bulma/css/bulma.min.css';
 import { Button } from 'react-bulma-components';
 import './Login.css'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasAccount }) => {
     const [username, setUsername] = useState('')
@@ -28,7 +29,10 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
     const handleLoginSuccess = (user) => {
         setCurrentUser(user)
         setIsLoggedIn(true)
+        navigate("/")
     }
+
+    const navigate = useNavigate()
 
     //const handleClick = () => {
        
