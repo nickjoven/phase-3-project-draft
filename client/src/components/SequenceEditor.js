@@ -3,9 +3,23 @@ import Grid from './Grid';
 import Bar from './SequencerBar'
 import PlayButton from './PlayButton';
 import './SequenceEditor.css'
+import NewSequenceForm from './NewSequenceForm';
 
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
+
+// the db object looks different due to nesting
+const emptySequence = {
+    title: '',
+    plays: 0,
+    image: '',
+    distortionValue: '',
+    crusherValue: '',
+    limiterValue: '',
+    stepInterval: '',
+    userId: null,
+    pattern: []
+}
 
 const SequenceEditor = ({ 
     player, 
@@ -18,6 +32,7 @@ const SequenceEditor = ({
     setDistortionValue 
 }) => {
     player.volume.value = -1 * lineMap.length
+    const [sequenceObject, setSequenceObject] = useState(emptySequence)
     const initialState = new Array(lineMap.length).fill().map(() => Array(16).fill(initialCellState))
     const [sequence, setSequence] = useState(initialState);
     const [playing, setPlaying] = useState(true);
@@ -29,8 +44,10 @@ const SequenceEditor = ({
     const [checkedC, setCheckedC] = useState(false)
     const [checkedL, setCheckedL] = useState(false)
     const [cs, setCs] = useState(0)
+    const [visualBpm, setVisualBpm] = useState(120)
+    const [stepInterval, setStepInterval] = useState(120)
     
-
+    
     const toggleStep = (line, step) => {
         const sequenceCopy = [...sequence];
         const { triggered, activated } = sequenceCopy[line][step];
@@ -38,7 +55,7 @@ const SequenceEditor = ({
         console.log("toggled");
         setSequence(sequenceCopy);
     };
-
+    
     const nextStep = time => {
         for (let i = 0; i < sequence.length; i++) {
             for (let j = 0; j < sequence[i].length; j++) {
@@ -51,31 +68,31 @@ const SequenceEditor = ({
         }
         setSequence(sequence);
     };
-
+    
     useEffect(() => {
         const timer = setTimeout(() => {
             if (playing) {
                 setCurrentStep((currentStep + 1) % steps);
                 nextStep(currentStep)
             }
-        }, 166);
+        }, stepInterval);
         return () => {
             clearTimeout(timer);
         };
     }, [currentStep, playing]);
-
+    
     const handleClickCrush = () => {
         setShowCrush(!showCrush)
     }
-
+    
     const handleClickLimiter = () => {
         setShowLimiter(!showLimiter)
     }
-
+    
     const handleClickDistortion = () => {
         setShowDistortion(!showDistortion)
     }
-
+    
     const handleCheckCrush = () => {
         if (!checkedC) {
             setCs(3)
@@ -86,42 +103,77 @@ const SequenceEditor = ({
         }
         setCheckedC(!checkedC)
     }
-
+    
     const handleCheckLimiter = () => {
         if (!checkedL) {
             setLimiterValue(-20)
         } else setLimiterValue(0)
         setCheckedL(!checkedL)
     }
-
+    
     const handleCheckDistortion = () => {
         if (!checkedD) {
             setDistortionValue(.5)
         } else setDistortionValue(0)
         setCheckedD(!checkedD)
     }
-
+    
     const handleSlideDistortion = (e) => {
         setDistortionValue(e.target.value)
         setCheckedD(true)
     }
-
+    
     const handleSlideCrusher = (e) => {
         setCs(e.target.value)
         setCrusherValue(9 - cs)
         setCheckedC(true)
     }
-
+    
     const handleSlideLimiter = (e) => {
         setLimiterValue(0 - e.target.value)
         setCheckedL(true)
     }
+    
+    const controlForm = (e) => {
+        setSequenceObject({
+            ...sequenceObject,
+            [e.target.name]: e.target.value
+        })
+    }
 
+    const handleTempoClick = (e) => {
+        e.preventDefault()
+        setStepInterval(15000 / visualBpm)
+    }
+
+    const handleSaveSequence = async () => {
+        let passMe = {
+            title: sequenceObject.title,
+            plays: 0,
+            image: sequenceObject.image,
+            settings: {
+                distortion_value: distortionValue,
+                crusher_value: crusherValue,
+                limiter_value: limiterValue,
+                step_interval: stepInterval
+            },
+            user_id: 1,
+            pattern: sequence,
+        }
+        console.log(passMe)
+    }
+    
     
     return (
         <>
+            <NewSequenceForm controlForm={controlForm} sequenceObject={sequenceObject} />
+            <button onClick={handleSaveSequence}>Save to Database</button>
             <Bar>
                 <PlayButton playing={playing} onClick={() => setPlaying(!playing)} />
+                <form onSubmit={handleTempoClick}>
+                    <input type='number'value={visualBpm} placeholder='bpm' min='15' max='240' step='1' onChange={(e) => setVisualBpm(e.target.value)} />
+                    <button type='submit'>Update Tempo</button>
+                </form>
                 <button onClick={handleClickDistortion}>Distortion</button>
                 {showDistortion
                 ? 
