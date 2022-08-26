@@ -161,6 +161,13 @@ const SequenceEditor = ({
             pattern: sequence,
         }
         console.log(passMe)
+        let req = await fetch('http://localhost:3300/sequences', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(passMe)
+        })
+        let res = await req.json()
+        console.log('you did it', res)
     }
     
     
