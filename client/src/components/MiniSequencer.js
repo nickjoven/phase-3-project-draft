@@ -3,17 +3,11 @@ import Grid from './Grid';
 import Bar from './SequencerBar'
 import PlayButton from './PlayButton';
 
-
 const steps = 16;
 const initialCellState = { triggered: false, activated: false };
 
-// const initialState = [
-//     new Array(16).fill(initialCellState),
-//     new Array(16).fill(initialCellState),
-// ];
-
-
 const MiniSequencer = ({ player, lineMap }) => {
+    player.volume.value = -1.5 * lineMap.length
     const initialState = new Array(lineMap.length).fill().map(() => Array(16).fill(initialCellState))
     const [sequence, setSequence] = useState(initialState);
     const [playing, setPlaying] = useState(true);
@@ -46,7 +40,7 @@ const MiniSequencer = ({ player, lineMap }) => {
                 setCurrentStep((currentStep + 1) % steps);
                 nextStep(currentStep);
             }
-        }, 112);
+        }, 180);
         return () => {
             clearTimeout(timer);
         };
