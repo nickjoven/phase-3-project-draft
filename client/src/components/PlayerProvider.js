@@ -4,7 +4,7 @@ import * as Tone from 'tone'
 const PlayerProvider = ({ children }) => {
     const [player, setPlayer] = useState(null);
     const [crusherValue, setCrusherValue] = useState(16)
-    const [limiterValue, setLimiterValue] = useState(-10)
+    const [limiterValue, setLimiterValue] = useState(-50)
     const [distortionValue, setDistortionValue] = useState(0)
      
     useEffect(() => {

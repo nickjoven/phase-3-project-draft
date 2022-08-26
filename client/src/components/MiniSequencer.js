@@ -7,7 +7,7 @@ const steps = 16;
 const initialCellState = { triggered: false, activated: false };
 
 const MiniSequencer = ({ player, lineMap }) => {
-    player.volume.value = -1.5 * lineMap.length
+    player.volume.value = -1 * lineMap.length
     const initialState = new Array(lineMap.length).fill().map(() => Array(16).fill(initialCellState))
     const [sequence, setSequence] = useState(initialState);
     const [playing, setPlaying] = useState(true);

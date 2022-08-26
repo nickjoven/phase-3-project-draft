@@ -11,7 +11,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({})
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const lineMap = ["BD", "BD2"];
+  const lineMap = ["BD", "SN"];
   const lineMap2 = ['BD', 'BD2', 'SN', 'CH', 'OH', 'T1', 'T2', 'T3']
   
   return (
@@ -31,7 +31,7 @@ const App = () => {
         return (
           <div className='App'>
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} />
-            {/* {isLoggedIn ?
+            {isLoggedIn ?
             <>
               <Feed /> 
             </> :
@@ -39,7 +39,7 @@ const App = () => {
               <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
               <MiniSequencer player={player} lineMap={lineMap} />
             </>
-            } */}          
+            }          
             <SequenceEditor 
               player={player} 
               lineMap={lineMap2} 
