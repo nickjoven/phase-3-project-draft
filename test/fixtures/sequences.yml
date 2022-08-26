@@ -4,10 +4,12 @@ one:
   title: MyString
   plays: 1
   image: MyString
+  settings: 
   user_id: 1
 
 two:
   title: MyString
   plays: 1
   image: MyString
+  settings: 
   user_id: 1

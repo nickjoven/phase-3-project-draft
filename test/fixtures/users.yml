@@ -2,10 +2,14 @@
 
 one:
   username: MyString
-  password: MyString
+  email: MyString
+  password_digest: MyString
   image: MyString
+  location: MyString
 
 two:
   username: MyString
-  password: MyString
+  email: MyString
+  password_digest: MyString
   image: MyString
+  location: MyString
