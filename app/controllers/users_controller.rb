@@ -22,4 +22,13 @@ class UsersController < ApplicationController
             render :action => edit
         end
     end
+
+    def login
+        user = User.find_by!(username: params[:username])
+        if user && user.password_digest == params[:password]
+            render json: user, status: :ok
+        else
+            render json: {error: 'Invalid email password'}, status: 404
+        end
+    end
 end

@@ -4,10 +4,13 @@ import 'bulma/css/bulma.min.css';
 import { Button } from 'react-bulma-components';
 import './Login.css'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasAccount }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+	
 
 
     // const handleSubmit = (e) => {
@@ -25,7 +28,7 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		let req = await fetch('http://localhost:3300/users', {
+		let req = await fetch('http://localhost:3300/login_attempt', {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({username: username, password: password})
@@ -33,6 +36,7 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
 		if (req.ok) {
 			let res = await req.json()
 			console.log('User', res)
+			handleLoginSuccess(res)
 		} else {
 			alert('Invalid login info')
 		}
@@ -43,7 +47,10 @@ const Login = ({ currentUser, setCurrentUser, setIsLoggedIn, isLoggedIn, setHasA
     const handleLoginSuccess = (user) => {
         setCurrentUser(user)
         setIsLoggedIn(true)
+		navigate("/")
     }
+
+	const navigate = useNavigate()
 
     //const handleClick = () => {
        
